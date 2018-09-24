@@ -19,13 +19,9 @@
         }
 
         loadJSON(function(response) {
-            console.log(response);
             const links = JSON.parse(response);
-            console.log(links);
             const index = getRndInteger(0, links.length);
-            console.log(index);
             const urlToGo = links[index];
-            console.log(urlToGo);
             if (urlToGo) {
                 window.location.href = urlToGo;
             }
