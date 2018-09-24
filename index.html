@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html>
+    <script>
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min) ) + min;
+        }
+
+         function loadJSON(callback) {   
+
+            const xobj = new XMLHttpRequest();
+                xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'links.json', true); 
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+                    callback(xobj.responseText);
+                }
+            };
+            xobj.send(null);  
+        }
+
+        loadJSON(function(response) {
+            const links = JSON.parse(response);
+            const index = getRndInteger(0, links.lenght);
+            window.location.href = links[index];
+        });
+    </script>
     <body>
-        <h2>This is a test</h2>
+        
     </body>
 </html>
